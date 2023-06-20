@@ -1,0 +1,11 @@
+{
+  "empresa": [
+    {
+      "id": 1,
+      "name": "carros lava",
+      "email": "carros@gmail.com",
+      "address": "vila cesar",
+      "function": "Nós lavamos carros"
+    }
+  ]
+}
