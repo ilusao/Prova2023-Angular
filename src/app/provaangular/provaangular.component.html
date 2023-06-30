@@ -1,1 +1,60 @@
-<p>provaangular works!</p>
+<div class="row">
+  <div class="col-8 m-auto">
+    <form [formGroup]="formgrupempresa">
+      <div class="form-group">
+        <label for="Nome">Nome :</label>
+        <input type="text" formControlName="name" class="form-control" id="Nome do fornecedor" aria-describedby="Nome" placeholder="Seu Nome">
+      </div>
+
+      <div class="form-group">
+        <label for="Nome">Email :</label>
+        <input type="text" formControlName="email" class="form-control" id="email" aria-describedby="email" placeholder="Seu Email">
+      </div>
+
+      <div class="form-group">
+        <label for="indereço">Indereço :</label>
+        <input type="text" formControlName="address" class="form-control" id="address" aria-describedby="address" placeholder="Seu indereço">
+      </div>
+
+      <div class="form-group">
+        <label for="function">Função da empresa :</label>
+        <input type="text" formControlName="function" class="form-control" id="function" aria-describedby="function" placeholder="Sua função">
+      </div>
+
+
+      <div class="form-group">
+        <button type="button" class="btn btn-primary" (click)="save()">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-8 m-auto">
+    <table class="table table-bordered border-primary">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Email</th>
+          <th scope="col">Indereço</th>
+          <th scope="col">Função da empresa</th>
+          <th scope="col">Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let empresa of empresa">
+          <th scope="row">{{empresa.id}}</th>
+          <td>{{empresa.name}}</td>
+          <td>{{empresa.email }}</td>
+          <td>{{empresa.address}}</td>
+          <td>{{empresa.function}}</td>
+          <td class="d-flex justify-content-end">
+            <button class="btn btn-primary me-1" (click)="delete(empresa)">Excluir</button>
+      </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

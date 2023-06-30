@@ -4,6 +4,7 @@ import { EmpresaService } from '../empresa.service';
 import { Empresa } from './empresa';
 
 
+
 @Component({
   selector: 'app-provaangular',
   templateUrl: './provaangular.component.html',
@@ -15,7 +16,7 @@ export class ProvaangularComponent implements OnInit {
   formgrupempresa : FormGroup;
   isEditing: boolean = false;
 
-  constructor (private empresaService : EmpresaService,
+   constructor (private empresaService : EmpresaService,
                private formBuilder : FormBuilder
    ){
        this.formgrupempresa = formBuilder.group({
@@ -38,4 +39,25 @@ export class ProvaangularComponent implements OnInit {
       next: data => this.empresa= data,
      error: msg => console.log ("erro ao chamar o endpoint" + msg)
     })
-  }}
+  }
+
+    save(){
+      this.empresaService.save(this.formgrupempresa.value).subscribe(
+        {
+                next : data => {
+                    this.empresa.push(data);
+                    this.formgrupempresa.reset();
+                }
+        }
+
+    )
+
+   }
+
+    delete(empresa : Empresa): void{
+      this.empresaService.delete(empresa).subscribe({
+        next: () => this.loadEmpresas()
+      })
+
+    }
+}
